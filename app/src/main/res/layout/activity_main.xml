@@ -22,6 +22,7 @@
         android:src="@drawable/ic_brush"
         app:layout_constraintBottom_toBottomOf="@id/drawing_view"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        android:scaleType="fitXY"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
