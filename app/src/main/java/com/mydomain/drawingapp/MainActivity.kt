@@ -2,12 +2,15 @@ package com.mydomain.drawingapp
 
 import android.app.AlertDialog
 import android.app.Dialog
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.View
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.SeekBar
 import android.widget.TextView
 import android.widget.Toast
@@ -32,6 +35,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var  saveButton: ImageButton
     private lateinit var  colorPickerButton: ImageButton
 
+    private val openGalleryLauncher: ActivityResultLauncher<Intent> =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            result ->
+            findViewById<ImageView>(R.id.gallery_image).setImageURI(result.data?.data)
+        }
+
     val requestPermission: ActivityResultLauncher<Array<String>> =
         registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
             permissions.entries.forEach {
@@ -40,6 +49,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 if (isGranted && permissionName == android.Manifest.permission.READ_EXTERNAL_STORAGE) {
                     Toast.makeText(this, "Permission granted", Toast.LENGTH_SHORT).show()
+                    val pickIntent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+                    openGalleryLauncher.launch(pickIntent)
                 } else {
                     if (permissionName == android.Manifest.permission.READ_EXTERNAL_STORAGE){
                         Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show()
@@ -182,6 +193,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     requestStoragePermission()
                 } else {
                     // get the image
+                    val pickIntent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+                    openGalleryLauncher.launch(pickIntent)
                 }
             }
             R.id.color_picker_button -> {
