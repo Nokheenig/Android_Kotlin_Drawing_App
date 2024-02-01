@@ -1,6 +1,7 @@
 package com.mydomain.drawingapp
 
 import android.app.Dialog
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -8,6 +9,8 @@ import android.widget.ImageButton
 import android.widget.SeekBar
 import android.widget.TextView
 import android.widget.Toast
+import yuku.ambilwarna.AmbilWarnaDialog
+import yuku.ambilwarna.AmbilWarnaDialog.OnAmbilWarnaListener
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var  drawingView: DrawingView
@@ -83,6 +86,20 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         brushDialog.show()
     }
 
+    private fun showColorPickerDialog () {
+        val dialog = AmbilWarnaDialog(this, Color.GREEN, object: OnAmbilWarnaListener{
+            override fun onCancel(dialog: AmbilWarnaDialog?) {
+
+            }
+
+            override fun onOk(dialog: AmbilWarnaDialog?, color: Int) {
+                drawingView.setColor(color)
+            }
+
+        })
+        dialog.show()
+    }
+
     override fun onClick(view: View?) {
         when (view?.id) {
             R.id.purple_button -> {
@@ -113,7 +130,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 Toast.makeText(this@MainActivity, "Gallery button has been pressed", Toast.LENGTH_SHORT).show()
             }
             R.id.color_picker_button -> {
-                Toast.makeText(this@MainActivity, "Color picker button has been pressed", Toast.LENGTH_SHORT).show()
+                showColorPickerDialog()
             }
 
         }
