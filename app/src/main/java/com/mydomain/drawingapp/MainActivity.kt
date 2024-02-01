@@ -7,19 +7,26 @@ import android.view.View
 import android.widget.ImageButton
 import android.widget.SeekBar
 import android.widget.TextView
+import android.widget.Toast
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
-    private lateinit var drawingView: DrawingView
-    private lateinit var brushButton: ImageButton
+    private lateinit var  drawingView: DrawingView
+
     private lateinit var  purpleButton: ImageButton
     private lateinit var  redButton: ImageButton
     private lateinit var  orangeButton: ImageButton
     private lateinit var  greenButton: ImageButton
     private lateinit var  blueButton: ImageButton
+
+    private lateinit var  brushButton: ImageButton
+    private lateinit var  undoButton: ImageButton
+    private lateinit var  galleryButton: ImageButton
+    private lateinit var  saveButton: ImageButton
+    private lateinit var  colorPickerButton: ImageButton
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        brushButton = findViewById(R.id.brush_button)
 
         purpleButton = findViewById(R.id.purple_button)
         redButton = findViewById(R.id.red_button)
@@ -33,12 +40,24 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         greenButton.setOnClickListener(this)
         blueButton.setOnClickListener(this)
 
-        drawingView = findViewById(R.id.drawing_view)
-        drawingView.changeBrushSize(23.toFloat())
+        brushButton = findViewById(R.id.brush_button)
+        undoButton = findViewById(R.id.undo_button)
+        saveButton = findViewById(R.id.save_button)
+        galleryButton = findViewById(R.id.gallery_button)
+        colorPickerButton = findViewById(R.id.color_picker_button)
 
         brushButton.setOnClickListener{
             showBrushChooserDialog()
         }
+
+        undoButton.setOnClickListener(this)
+        saveButton.setOnClickListener(this)
+        galleryButton.setOnClickListener(this)
+        colorPickerButton.setOnClickListener(this)
+
+        drawingView = findViewById(R.id.drawing_view)
+        drawingView.changeBrushSize(23.toFloat())
+
     }
 
     private fun showBrushChooserDialog(){
@@ -67,7 +86,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(view: View?) {
         when (view?.id) {
             R.id.purple_button -> {
-                drawingView.setColor("@android:color/holo_purple")
+                drawingView.setColor("#AA66CC")
             }
             R.id.red_button -> {
                 drawingView.setColor("#ED4A4A")
@@ -81,6 +100,22 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.blue_button -> {
                 drawingView.setColor("#36B9E9")
             }
+            /*R.id.brush_button -> {
+                view.showBrushChooserDialog()
+            }*/
+            R.id.undo_button -> {
+                drawingView.undoPath()
+            }
+            R.id.save_button -> {
+                Toast.makeText(this@MainActivity, "Save button has been pressed", Toast.LENGTH_SHORT).show()
+            }
+            R.id.gallery_button -> {
+                Toast.makeText(this@MainActivity, "Gallery button has been pressed", Toast.LENGTH_SHORT).show()
+            }
+            R.id.color_picker_button -> {
+                Toast.makeText(this@MainActivity, "Color picker button has been pressed", Toast.LENGTH_SHORT).show()
+            }
+
         }
     }
 }
