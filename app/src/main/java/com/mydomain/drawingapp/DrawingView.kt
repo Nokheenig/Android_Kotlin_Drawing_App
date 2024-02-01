@@ -106,5 +106,10 @@ class DrawingView (context: Context, attrs: AttributeSet) : View(context, attrs)
         drawPaint.strokeWidth = brushSize
     }
 
+    fun setColor(newColor: String) {
+        color = Color.parseColor(newColor)
+        drawPaint.color = color
+    }
+
     internal inner class FingerPath(var color: Int, var brushThickness : Float) : Path()
 }

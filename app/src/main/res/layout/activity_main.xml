@@ -28,31 +28,31 @@
         android:gravity="center"
         android:layout_above="@+id/linear_l3">
 
-        <androidx.appcompat.widget.AppCompatImageButton            android:id="@+id/purple_button"
+        <ImageButton           android:id="@+id/purple_button"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_margin="15dp"
             android:background="@drawable/purple_bg"/>
 
-        <androidx.appcompat.widget.AppCompatImageButton            android:id="@+id/red_button"
+        <ImageButton            android:id="@+id/red_button"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_margin="15dp"
             android:background="@drawable/red_bg"/>
 
-        <androidx.appcompat.widget.AppCompatImageButton            android:id="@+id/green_button"
+        <ImageButton            android:id="@+id/green_button"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_margin="15dp"
             android:background="@drawable/green_bg"/>
 
-        <androidx.appcompat.widget.AppCompatImageButton            android:id="@+id/blue_button"
+        <ImageButton            android:id="@+id/blue_button"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_margin="15dp"
             android:background="@drawable/blue_bg"/>
 
-        <androidx.appcompat.widget.AppCompatImageButton            android:id="@+id/orange_button"
+        <ImageButton            android:id="@+id/orange_button"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_margin="15dp"
@@ -66,31 +66,31 @@
         android:layout_alignParentBottom="true"
         android:gravity="center">
 
-        <androidx.appcompat.widget.AppCompatImageButton            android:id="@+id/brush_button"
+        <ImageButton            android:id="@+id/brush_button"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_margin="5dp"
             android:scaleType="fitXY"
             android:src="@drawable/ic_brush"/>
-        <androidx.appcompat.widget.AppCompatImageButton            android:id="@+id/save_button"
+        <ImageButton            android:id="@+id/save_button"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_margin="5dp"
             android:scaleType="fitXY"
             android:src="@drawable/ic_save"/>
-        <androidx.appcompat.widget.AppCompatImageButton            android:id="@+id/gallery_button"
+        <ImageButton            android:id="@+id/gallery_button"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_margin="5dp"
             android:scaleType="fitXY"
             android:src="@drawable/ic_gallery"/>
-        <androidx.appcompat.widget.AppCompatImageButton            android:id="@+id/undo_button"
+        <ImageButton            android:id="@+id/undo_button"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_margin="5dp"
             android:scaleType="fitXY"
             android:src="@drawable/ic_undo"/>
-        <androidx.appcompat.widget.AppCompatImageButton            android:id="@+id/color_picker_button"
+        <ImageButton            android:id="@+id/color_picker_button"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_margin="5dp"
